@@ -1,9 +1,50 @@
-const readline = require("readline");
+/* const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-});
+}); */
+const fs = require("fs");
+
+function getInputLines(fileName) {
+  let inputLines = null;
+
+  try {
+    const data = fs.readFileSync(fileName, "utf8");
+    inputLines = data.split("\r\n");
+  } catch (err) {
+    console.log(err);
+  }
+
+  return inputLines;
+}
+
+function getTopRightCoordinates(firstLine) {
+  const coordinate = firstLine.split(" ");
+
+  return {
+    x: Number(coordinate[0]),
+    y: Number(coordinate[1]),
+  };
+}
+
+function getSpaceProbe(startingPosition, commands) {
+  const startingPositionValues = startingPosition.split(" ");
+
+  return {
+    x: startingPositionValues[0],
+    y: startingPositionValues[1],
+    initialDirection: startingPositionValues[2],
+    movements: commands,
+  };
+}
+
+const inputLines = getInputLines("./inputs/input.txt");
+const topRightCoordinate = getTopRightCoordinates(inputLines[0]);
+const spaceProbe = getSpaceProbe(inputLines[1], inputLines[2]);
+
+console.log(spaceProbe);
+
 
 const answers = [];
 
@@ -60,7 +101,7 @@ function exploreMars(answers) {
   });
 }
 
-rl.question(
+/* rl.question(
   ">> Enter the coordinates of the upper right corner:  ",
   (answer) => {
     answers.push(answer);
@@ -79,7 +120,7 @@ rl.question(
   }
 );
 
-module.exports = { exploreMars };
+module.exports = { exploreMars }; */
 
 //TO DO LIST
 // [x] pegar os dados inseridos pelo usuário
