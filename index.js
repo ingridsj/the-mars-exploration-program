@@ -118,3 +118,5 @@ const allSpaceProbe = getAllSpaceProbe(inputLines);
 const separatedSpaceProbe = getSeparateSpaceProbe(allSpaceProbe);
 const movingSpaceProbe = exploringMars(separatedSpaceProbe, topRightCoordinate);
 const outputLines = setOutputLines("./outputs/output.txt", movingSpaceProbe);
+
+module.exports = { exploringMars };
